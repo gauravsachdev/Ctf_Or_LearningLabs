@@ -1,8 +1,8 @@
 Description says its in the cookie 
 Using burp to intercept
 2 cookies 1 for session 1 for tracking ID
-No need to mess with the sessio
-Only use the session
+No need to mess with the session
+Only use the tracking id
 Send the intercepted packet to the repeater
 Using the SQL cheat sheet https://portswigger.net/web-security/sql-injection/cheat-sheet
 Just to check which version is being used I'll try MySQL first
