@@ -1,0 +1,7 @@
+Need to change the tracking id
+Using the cheat sheet https://portswigger.net/web-security/sql-injection/cheat-sheet
+Would need to use the concept of batched queries 
+Using ; doesn't work with the cookies format
+Used %3B worked instead of ;
+and used 
+'%3B 	SELECT pg_sleep(10) --  ;
