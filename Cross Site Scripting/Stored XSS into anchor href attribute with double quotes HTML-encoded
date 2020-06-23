@@ -1,0 +1,14 @@
+This is different
+Stored xss so must be in the blog comments as the point where we inject js
+Tried 
+<a href="javascript:alert(1)"> 
+on clicking nothing happens
+on checking I entered the payload in the wrong field
+Tried entering it into the email field didn't work
+need to do it in teh website field
+" qoutes escaped the code 
+Trying to escape the code
+" <script> alert(1) </script> //
+in the website field
+"> <script> alert(1) </script> //
+worked
