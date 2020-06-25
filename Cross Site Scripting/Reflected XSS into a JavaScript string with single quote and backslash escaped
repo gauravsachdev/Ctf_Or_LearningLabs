@@ -1,0 +1,6 @@
+Lab states that we must try to escape out of the javascript string
+single quotes and backslash escaped
+</script><img src=1 onerror=alert(1)>
+worked
+https://portswigger.net/web-security/cross-site-scripting/contexts
+terminated the existing script
