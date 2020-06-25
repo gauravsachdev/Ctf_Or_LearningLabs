@@ -1,0 +1,11 @@
+Need to check how canonical tags work
+No search bar in this lab
+Only entry point will be via comments but that is stored
+Maybe its the cookie
+Only session is available doesn't look injectable
+Maybe its the url with the post id
+Not with post id that's more towards sqli
+?%27accesskey=%27x%27onclick=%27alert(1)
+solved the lab ? serves as an additional get parameter
+<link rel="canonical" href='https://ac1b1f781eab33f78021100a00e700fa.web-security-academy.net/?'accesskey='x'onclick='alert(1)'/>
+this is what the injected payload looks like in the source
