@@ -1,0 +1,19 @@
+No search bar
+Url injection most probably
+https://portswigger.net/web-security/cross-site-scripting/contexts
+onerror is probably the way to go
+/?%27onerror=alert;throw%201337\\
+this did nothing
+no clue what to do so checked the solution that decoded to this 
+post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:'
+post is the file where the parameters are sent
+postId is one parameter with value 5
+the & creates another parameter with name '},x and value as
+x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:'
+x=>{} in javascript means it is a function that has the parameter x
+the varaible '},x stores the value of the function
+In js the , is used to separate expressions solved left to right and the value of the last one is returned
+the first one creates an error with the alert(1337) when an error is found
+next x passes through the toString function
+window+'' makes it a string lastly 
+The last part of the payload {x:' completes the remaining JavaScript code '}.finally
