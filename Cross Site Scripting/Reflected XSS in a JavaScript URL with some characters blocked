@@ -6,18 +6,23 @@ onerror is probably the way to go
 this did nothing
 no clue what to do so checked the solution that decoded to this 
 post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:'
-post is the file where the parameters are sent
-postId is one parameter with value 5
-the & creates another parameter with name '},x and value as
-x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:'
-x=>{} in javascript means it is a function that has the parameter x
-the varaible '},x stores the value of the function
-In js the , is used to separate expressions solved left to right and the value of the last one is returned
-the first one creates an error with the alert(1337) when an error is found
-next x passes through the toString function
-window+'' makes it a string lastly 
-The last part of the payload {x:' completes the remaining JavaScript code '}.finally
+Once you open a post and check the source code you see that when you click back to blog the following line is there 
 
+javascript:fetch('/analytics', {method:'post',body:'/post?postId=4'}).finally(_ => window.location = '/')
 
-<a href="javascript:fetch('/analytics', {method:'post',body:'/post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window '',{x:''}).finally(_ => window.location = '/')">Back to Blog</a>
-this is present in the source code of the blog post 
+After injecting the line contains
+<a href="javascript:fetch('/analytics', {method:'post',body:'/post?postId=5&'},x=x=>{throw/**/onerror=alert,1337},toString=x,window+'',{x:''}).finally(_ => window.location = '/')">Back to Blog</a>
+
+Essentially we are exploiting the fetch function
+What the injecting line does is
+
+&: this character is used to tell the compiler that there are more parameters in the body
+THis is done to make sure compilation doesn't stop there else the rest of the code wouldn't work
+x=...:After the , we essentially are creating a => function in java and assigning it to the 
+variable x. This is simply an alert function which alerts 1337
+toString=x: this line essentially uses the toString overriding to now make the toString function become our x function which
+is the alert function
+Lastly we use the window object and make it so that the toString function is invoked by window+''
+When it gets invoked it causes the alert
+It occurs when we press the button because the fetch function is called only after the button is clicked
+ 
