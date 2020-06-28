@@ -1,0 +1,5 @@
+Search bar reflected
+https://portswigger.net/web-security/cross-site-scripting/contexts 
+XSS in JavaScript template literals
+${alert(document.domain)} 
+simply putting that in worked
