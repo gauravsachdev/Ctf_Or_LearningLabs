@@ -1,0 +1,22 @@
+There was an introduction/beginners tutorial so I began that
+They already gave pretty clear instructions so I'
+m not detailing it much here
+It was to download and install a vm
+Then to download a connection pack to get into that network
+Keeping that running using OPEN VPN
+New tab I ran the nmap and port scan
+Took quite some time
+I know nmap at times is slow but could be more so because of the vm
+Using the smb client downloaded the config file
+Installing impacket was a big headache had to download pip3 and python3
+apt get update was needed as well
+https://forum.hackthebox.eu/discussion/2998/impacket-install
+this link helped a lot
+Had to further install ufw
+Didn't work so i ran ip a and changed the host ip everywhere
+Rest of it I just followed instructions
+Impacket wasnt working for me so i compiled them with python using a git clone in the folder
+After joining the session was able to locate the user administrator and find Desktop
+Used type to display text
+b91ccec3305e98240082d4474b848528
+was the flag.
