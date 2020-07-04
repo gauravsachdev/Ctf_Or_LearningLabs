@@ -4,3 +4,9 @@ ports=$(nmap -p- --min-rate=1000 -T4 10.10.10.28 | grep ^[0-9] | cut -d '/' -f 1
 nmap -sC -sV -p$ports 10.10.10.28
 Searches active ports
 ---------------------------------------------------------------------------------
+Reverse Shell cheat sheet
+http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+--------------------------------------------------------------------
+Full tty shell
+SHELL=/bin/bash script -q /dev/null
+----------------------------------------
