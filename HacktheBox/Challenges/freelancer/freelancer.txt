@@ -1,0 +1,23 @@
+{   url: "././mail/contact_me.php",
+        type: "POST",
+        data: {
+          name: name,
+          phone: phone,
+          email: email,
+          message: message
+        }
+------------------------------------------------------
+Found portfolio.php in the source
+Used that to run an sqlmap and it was injectable
+--------------------------------
+dirb found a administrat page that opened up a login page
+Trying to extract username and password from db to this
+Str0ngP4ss was teh password for db_user
+didnt work with common usernames and passwords
+maybe run it against burp suite and common list
+found safeadmin table
+safeadm was the user and password didnt seem crackable
+safeadm was a valid user in the login page
+waiting for the dirb scan to complete
+got panel.php in a .php extenstio dirb in administrat folder
+with sqlmap file read was able to get the flag
