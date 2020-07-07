@@ -24,3 +24,6 @@ masscan -p 1-65535 10.10.10.30 -e tun0 --rate=1000
 Essentially it becomes faster than an nmap scan for all ports
 then nmap these ports
 -------------------------------------------------
+sudo -l
+see what commands you can running
+---------------------------------------------
