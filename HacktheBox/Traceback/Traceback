@@ -12,3 +12,32 @@ PORT   STATE SERVICE VERSION
 |_http-server-header: Apache/2.4.29 (Ubuntu)
 |_http-title: Help us
 Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+---------------
+tried a 
+dirb on the ip
+Nothing turned up
+
+The source code of the page revealed 
+Some of the best web shells that you might need ;)
+Google searched there is a github repo
+The same user had a github with that description
+I checked manually which files were present on the server and got into
+http://10.10.10.181/smevk.php
+loaded
+The source of this shell showed their credentials as admin:admin
+Uploaded a generated
+ssh-keygen and used that to log in
+
+In the main folder there was note about lua
+When I used 
+sudo -l 
+it showed a luvit file
+Thats a lua file that maybe I can escalate priveleges with
+a search on lua escalate priveleges lead me to 
+https://gtfobins.github.io/gtfobins/lua/
+sudo -u sysadmin /home/sysadmin/luvit
+os.execute(“/bin/bash -i”)
+
+echo cat /root/root.txt>> 00-header
+Relaunch the ssh and the root txt gets displayed as the motd
+The update motd folder had the header
