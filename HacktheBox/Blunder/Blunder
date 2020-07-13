@@ -1,0 +1,27 @@
+masscan -p 1-65535 10.10.10.30 -e tun0 --rate=1000
+Only port 80 open
+--------------------------------------
+dirb http://10.10.10.191/ with noraml and php and html gave nothing but the .txt 
+-X .txt gave a todo file with a username fergus
+----------------------------
+Found admin page which gave a login page 
+Powered by BLUDIT seeing how to exploit that
+https://rastating.github.io/bludit-brute-force-mitigation-bypass/
+They apparently have an anti brute force mechanism which can be bypassed by adding a header that changes the client ip 
+with every attempt
+Seemed needlessly tiresome to blindly bruteforce the login although that was working it would theoretically take forever
+Common passwords didnt work
+Using cewl to get a custom worlist
+Using the wordlist with fergus as the username
+RolandDeschain
+I know there is a path traversal exploit as well from a google search so will try that in an image upload
+The users.txt was not accessible found the users.php in bludit but an online search found that salt was added at the end
+
+5dde2887e7aca
+bfcc887f62e36ea019e3295aafb8a3885966e265
+Wasnt being able to decode
+More enumeration revealed a newer version of bludit with a users.php without a salt 
+Password120
+sudo -l revealed he had bash priveleges
+sudo -u#-1 /bin/bash
+gave root access

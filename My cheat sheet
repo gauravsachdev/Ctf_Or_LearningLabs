@@ -41,3 +41,6 @@ Gives the date of the server
 Windows Privilege Escalation Cheat Sheet
 https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Windows%20-%20Privilege%20Escalation.md
 -----------------------------------------
+Shell command in meterpreter to give the shell
+Then python to give python shell or Shell=...
+---------------------------------
