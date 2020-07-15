@@ -1,0 +1,25 @@
+./ means current directory
+~/ means home/<current user>/
+&& back to back commands
+command & 
+makes command run in the background
+commadn1 & commadn2 makes both in background
+Enviroment variable $
+export <varname>=<value>
+export nootnoot=1111
+command1|commadn2 takes output of 1 and gives to 2
+4 read 2 write 1 execute
+These attributes are the user, and group attributes resepectively. Recall that we can edit the permissions for these attributes, so it stands to reason that we can also change these attributes. That is done using the chown command, which allows us to change the user and group for any file. The syntax for this command is chown user:group file. For example if we wanted to change the owner of file to shiba2 as well as the group to shiba2, we could use
+chown shiba2:shiba2 file.     
+/etc/passwd - Stores user information - Often used to see all the users on a system
+/etc/shadow - Has all the passwords of these users
+/tmp - Every file inside it gets deleted upon shutdown - used for temporary files
+/etc/sudoers - Used to control the sudo permissions of every user on the system -
+/home - The directory where all your downloads, documents etc are. - The equivalent on Windows is C:\Users\<user>
+/root - The root user's home directory - The equivilent on Windows is C:\Users\Administrator
+/usr - Where all your software is installed 
+/bin and /sbin - Used for system critical files - DO NOT DELETE
+/var - The Linux miscellaneous directory, a myriad of processes store data in /var
+$PATH - Stores all the binaries you're able to run - same as $PATH on Windows
+
+find / -user shiba1 -type f 2>>/dev/nul
