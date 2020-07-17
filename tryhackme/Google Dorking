@@ -1,0 +1,17 @@
+Google Dorking
+Robots.txt 
+User-agent bots which can access
+Allow:
+Disallow: works with regex
+Sitemap
+
+----------------
+"" Search exact queries
+
+Site: x.y.x
+
+filetype: Search for a file by its extension (e.g. PDF)
+
+cache:	View Google's Cached version of a specified URL
+
+intitle:	The specified phrase MUST appear in the title of the page
