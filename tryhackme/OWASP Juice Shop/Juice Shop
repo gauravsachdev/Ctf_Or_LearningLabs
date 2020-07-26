@@ -1,0 +1,42 @@
+Deploy the machine
+
+Set up burp
+
+Walk through the application 
+They have an ftp server at http://10.10.95.242/#/about in a link http://10.10.95.242/ftp/legal.md?md_debug=true
+From the ftp folder found that there is Ubuntu running and Express running as well node is installed as well
+
+Injection
+
+SQL Injection and Command Injection 
+For this have to log in using admin
+admin@juice-sh.op' OR 1=1 -- was used to login successfully
+
+Broken Authentication
+forgotten password mechanisms
+exploiting bugs in the authentication process
+
+More info on jim revealed "starfleet" in one of the comments hinting at the star wars universe and then to the answer Samuel
+
+Trying admin login credentials admin administrator didnt work but admin123 worked
+
+
+Sensitive Data Exposure
+
+The ftp folder had the acquisitions.md file
+
+Broken Access Control
+
+main.js find admin administration  
+local session storage change bid value
+
+Remove 5 star reviews trash icon
+
+
+XSS  
+
+https://portswigger.net/web-security/cross-site-scripting/cheat-sheet OWASP XSS Cheatsheet
+
+<iframe onload=alert(1)></iframe>
+<em>
+<style>@keyframes x{}</style><em style="animation-name:x" onanimationstart="alert(1)"></em>
