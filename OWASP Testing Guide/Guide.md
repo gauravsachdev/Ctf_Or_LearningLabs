@@ -87,8 +87,6 @@ Tools
 A paramount step in testing for web application vulnerabilities is to find out which particular applications are hosted on a web server. Many applications have known vulnerabilities and known attack strategies that can be exploited in order to gain remote control or to exploit data. In addition, many applications are often misconfigured or not updated, due to the perception that they are only used “internally” and therefore no threat exists.
 Most of the times across multuple ips and domain names. Important to identify wahts in scope and whats not.
 
-##### Black-Box Testing
-
 There are three factors influencing how many applications are related to a given DNS name (or an IP address):
 
 * Different Base URL
@@ -168,7 +166,7 @@ Net Square (multiple queries on domains and IP addresses, requires installation)
 
 The following example shows the result of a query to one of the above reverse-IP services to 216.48.3.18, the IP address of www.owasp.org. Three additional non-obvious symbolic names mapping to the same address have been revealed.
 
-OWASP Whois Info\ Figure 4.1.4-1: OWASP Whois Info
+OWASP Whois Info
 
 Googling
 Following information gathering from the previous techniques, testers can rely on search engines to possibly refine and increment their analysis. This may yield evidence of additional symbolic names belonging to the target, or applications accessible via non-obvious URLs.
@@ -204,4 +202,52 @@ Tools
 * Waybackurls
 * Google Maps API Scanner
 
-#### Identify Application Entry Points
+#### 4.1.6 Identify Application Entry Points
+
+Before any testing begins, the tester should always get a good understanding of the application and how the user and browser communicates with it. As the tester walks through the application, they should pay attention to all HTTP requests as well as every parameter and form field that is passed to the application. They should pay special attention to when GET requests are used and when POST requests are used to pass parameters to the application. In addition, they also need to pay attention to when other methods for RESTful services are used.
+
+##### Requests
+
+* Identify where GETs are used and where POSTs are used.
+* Identify all parameters used in a POST request (these are in the body of the request).
+* Within the POST request, pay special attention to any hidden parameters. When a POST is sent all the form fields (including hidden parameters) will be sent in the body of the HTTP message to the application. These typically aren’t seen unless a proxy or view the HTML source code is used. In addition, the next page shown, its data, and the level of access can all be different depending on the value of the hidden parameter(s).
+* Identify all parameters used in a GET request (i.e., URL), in particular the query string (usually after a ? mark).
+* Identify all the parameters of the query string. These usually are in a pair format, such as foo=bar. Also note that many parameters can be in one query string such as separated by a &, \~, :, or any other special character or encoding.
+* A special note when it comes to identifying multiple parameters in one string or within a POST request is that some or all of the parameters will be needed to execute the attacks. The tester needs to identify all of the parameters (even if encoded or encrypted) and identify which ones are processed by the application. 
+* Also pay attention to any additional or custom type headers not typically seen (such as debug=False).
+
+##### Responses
+* Identify where new cookies are set (Set-Cookie header), modified, or added to.
+* Identify where there are any redirects (3xx HTTP status code), 400 status codes, in particular 403 Forbidden, and 500 internal server errors during normal responses (i.e., unmodified requests).
+* Also note where any interesting headers are used. For example, “Server: BIG-IP” indicates that the site is load balanced. Thus, if a site is load balanced and one server is incorrectly configured, then the tester might have to make multiple requests to access the vulnerable server, depending on the type of load balancing used.
+
+* OWASP Attack Surface Detector
+The Attack Surface Detector (ASD) tool investigates the source code and uncovers the endpoints of a web application, the parameters these endpoints accept, and the data type of those parameters. This includes the unlinked endpoints a spider will not be able to find, or optional parameters totally unused in client-side code. It also has the capability to calculate the changes in attack surface between two versions of an application.
+
+#### 4.1.7 Map Execution Paths Through Application
+
+Map the target application and understand the principal workflows.
+* Path - test each of the paths through an application that includes combinatorial and boundary value analysis testing for each decision path. While this approach offers thoroughness, the number of testable paths grows exponentially with each decision branch.
+* Data Flow (or Taint Analysis) - tests the assignment of variables via external interaction (normally users). Focuses on mapping the flow, transformation and use of data throughout an application.
+* Race - tests multiple concurrent instances of the application manipulating the same data.
+* Automatic Spidering-The automatic spider is a tool used to automatically discover new resources (URLs) on a particular website.
+
+#### 4.1.8 Fingerprint Web Application Framework
+
+There is nothing new under the sun, and nearly every web application that one may think of developing has already been developed. With the vast number of free and Open Source software projects that are actively developed and deployed around the world, it is very likely that an application security test will face a target that is entirely or partly dependent on these well known applications or frameworks (e.g. WordPress, phpBB, Mediawiki, etc). Knowing the web application components that are being tested significantly helps in the testing process and will also drastically reduce the effort required during the test.  
+
+* HTTP headers - ```X-Powered-By``` and ```X-Generator fields```
+* Cookies - The values being set could signify which frameworks are being set
+* HTML source code - Comments in the middle or bottom or top or other fields could signify the frameworks
+* Specific files and folders - dirbuster or similar brute forces could reveal directories or files
+* File extensions - Same as above but with file extensions like .php , .aspx and .jsp
+* Error messages
+* General markers- %framework_name%,powered by,built upon,running
+
+Tools 
+* Whatweb
+* Wappanalyzer
+
+#### 4.1.9 Map Application Architecture
+
+Being able to identify the various servers/components/parts of the application is extremely helpful. Example: Reverse proxies can be identified by timing the response.
