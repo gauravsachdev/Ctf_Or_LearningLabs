@@ -95,8 +95,6 @@ The obvious entry point for a web application is www.example.com, i.e., with thi
 
 For example, the same symbolic name may be associated to three web applications such as: http://www.example.com/url1 http://www.example.com/url2 http://www.example.com/url3
 
-In this case, the URL http://www.example.com/ would not be associated with a meaningful page, and the three applications would be hidden, unless the tester explicitly knows how to reach them, i.e., the tester knows url1, url2 or url3. There is usually no need to publish web applications in this way, unless the owner doesn’t want them to be accessible in a standard way, and is prepared to inform the users about their exact location. This doesn’t mean that these applications are secret, just that their existence and location is not explicitly advertised.
-
 here is no way to fully ascertain the existence of non-standard-named web applications. Being non-standard, there is no fixed criteria governing the naming convention, however there are a number of techniques that the tester can use to gain some additional insight.
 
 First, if the web server is mis-configured and allows directory browsing, it may be possible to spot these applications. Vulnerability scanners may help in this respect.
@@ -122,8 +120,6 @@ One would not suspect the existence of other web applications in addition to the
 
 DNS Zone Transfers
 This technique has limited use nowadays, given the fact that zone transfers are largely not honored by DNS servers. However, it may be worth a try. First of all, testers must determine the name servers serving x.y.z.t. If a symbolic name is known for x.y.z.t (let it be www.example.com), its name servers can be determined by means of tools such as nslookup, host, or dig, by requesting DNS NS records.
-
-If no symbolic names are known for x.y.z.t, but the target definition contains at least a symbolic name, testers may try to apply the same process and query the name server of that name (hoping that x.y.z.t will be served as well by that name server). For example, if the target consists of the IP address x.y.z.t and the name mail.example.com, determine the name servers for domain example.com.
 
 The following example shows how to identify the name servers for www.owasp.org by using the host command:
 ```
@@ -251,3 +247,80 @@ Tools
 #### 4.1.9 Map Application Architecture
 
 Being able to identify the various servers/components/parts of the application is extremely helpful. Example: Reverse proxies can be identified by timing the response.
+
+### 4.2 Configuration and Deployment Management Testing  
+
+#### 4.2.1 Test Network Infrastructure Configuration  
+
+This section talks about configuration including patching and administrative tools. Non-obfuscated admin tools can cause massive problems. On the other hand ill configured servers are just as dangerous. Patching must be done completely and if done partially may not be visible to automated scanners but maybe still vulnerable.
+
+####  4.2.2 Test Application Platform Configuration
+
+Proper configuration of the single elements that make up an application architecture is important in order to prevent mistakes that might compromise the security of the whole architecture.
+Configuration review and testing is a critical task in creating and maintaining an architecture. This is because many different systems will be usually provided with generic configurations that might not be suited to the task they will perform on the specific site they’re installed on.
+Many web servers and application servers provide, in a default installation, sample applications and files for the benefit of the developer and in order to test that the server is working properly right after installation. However, many default web server applications have been later known to be vulnerable. 
+Check log and server status as enumeration points.
+
+#### 4.2.3 Test File Extensions Handling for Sensitive Information
+
+Which file extensions are used can determine what system and configuration is being run.
+The following file extensions should never be returned by a web server, since they are related to files which may contain sensitive information or to files for which there is no reason to be served.
+* .asa
+* .inc
+* .config
+
+For file upload Windows 8.3 legacy file handling can sometimes be used to defeat file upload filters. Example file.phtml gets processed as PHP code.
+
+#### 4.2.4 Review Old Backup and Unreferenced Files for Sensitive Information
+
+While most of the files within a web server are directly handled by the server itself, it isn’t uncommon to find unreferenced or forgotten files that can be used to obtain important information about the infrastructure or the credentials.
+
+Most common scenarios include the presence of renamed old versions of modified files, inclusion files that are loaded into the language of choice and can be downloaded as source, or even automatic or manual backups in form of compressed archives. Backup files can also be generated automatically by the underlying file system the application is hosted on, a feature usually referred to as “snapshots”.
+
+All these files may grant the tester access to inner workings, back doors, administrative interfaces, or even credentials to connect to the administrative interface or the database server.
+
+For example, if we make a copy of login.asp named login.asp.old, we are allowing users to download the source code of login.asp. This is because login.asp.old will be typically served as text or plain, rather than being executed because of its extension.
+Filename Filter Bypass:
+Because deny list filters are based on regular expressions, one can sometimes take advantage of obscure OS filename expansion features in which work in ways the developer didn’t expect. The tester can sometimes exploit differences in ways that filenames are parsed by the application, web server, and underlying OS and it’s filename conventions.
+
+Example: Windows 8.3 filename expansion ```c:\\program files``` becomes ```C:\\PROGRA\~1```
+
+#### 4.2.5 Enumerate Infrastructure and Application Admin Interfaces
+
+Administrator interfaces may be present in the application or on the application server to allow certain users to undertake privileged activities on the site. Tests should be undertaken to reveal if and how this privileged functionality can be accessed by an unauthorized or standard user.  
+
+If you have an idea of the infrastructure try google dorking or standard admin interfaces for that tech stack.
+
+#### 4.2.6 Test HTTP Methods
+
+Valid headers in HTTP
+* GET
+* HEAD
+* POST
+* PUT
+* DELETE
+* CONNECT
+* OPTIONS
+* TRACE
+However, most web applications only need to respond to GET and POST requests, receiving user data in the URL query string or appended to the request respectively. Since the other methods are so rarely used, many developers do not know, or fail to take into consideration, how the web server or application framework’s implementation of these methods impact the security features of the application.
+* Test supported HTTP methods. ```nmap -p 443 --script http-methods --script-args http-methods.url-path='/index.php' localhost``` 
+* Test for access control bypass.Find a page to visit that has a security constraint such that a GET request would normally force a 302 redirect to a log in page or force a log in directly. Issue requests using various methods such as HEAD, POST, PUT etc. as well as arbitrarily made up methods such as BILBAO, FOOBAR, CATS, etc. If the web application responds with a HTTP/1.1 200 OK that is not a log in page, it may be possible to bypass authentication or authorization.  
+If the system appears vulnerable, issue CSRF-like attacks such as the following to exploit the issue more fully:
+HEAD /admin/createUser.php?member=myAdmin
+PUT /admin/changePw.php?member=myAdmin&passwd=foo123&confirm=foo123
+CATS /admin/groupEdit.php?group=Admins&member=myAdmin&action=add
+* Test XST vulnerabilities.The TRACE method, intended for testing and debugging, instructs the web server to reflect the received message back to the client. This method, while apparently harmless, can be successfully leveraged in some scenarios to steal legitimate users’ credentials.
+```
+$ ncat www.victim.com 80
+TRACE / HTTP/1.1
+Host: www.victim.com
+Attack: <script>prompt()</script>
+```
+* Test HTTP method overriding techniques. Some web frameworks provide a way to override the actual HTTP method in the request by emulating the missing HTTP verbs passing some custom header in the requests. The main purpose of this is to circumvent some middleware (e.g. proxy, firewall) limitation where methods allowed usually do not encompass verbs such as PUT or DELETE. The following alternative headers could be used to do such verb tunneling:
+```
+X-HTTP-Method
+X-HTTP-Method-Override
+X-Method-Override
+```
+If a HTTP header gives a 405 not allowed then use one of the above fields.
+
