@@ -1,0 +1,13 @@
+#!/usr/bin/env python
+
+import base64
+import binascii
+f="flag{test}"
+e = base64.b64encode(f)
+z = []
+i = 0
+while i < len(e):
+        z += [ e[i] ^ e[((i + 1) % len(e))]]
+        i = i + 1
+c = binascii.hexlify(bytearray(z))
+print(c)
