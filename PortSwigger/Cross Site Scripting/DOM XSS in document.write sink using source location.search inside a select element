@@ -1,0 +1,2 @@
+product?productId=1&storeId=%27%3E%3C/select%3E%3Cimg%20src=1%20onerror=alert(1)%3E
+The solution has " but it is ' after the =
