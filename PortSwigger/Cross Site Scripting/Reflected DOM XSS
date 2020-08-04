@@ -1,0 +1,6 @@
+\"-alert(1)}//
+\"          // are for circumventing JSON escaping \
+
+The string in the JS file becomes
+
+"Search results ....." + "\\" -alert(1) ....
