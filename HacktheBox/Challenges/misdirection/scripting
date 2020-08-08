@@ -1,0 +1,28 @@
+#!/usr/bin/env python3
+
+from pwn import *
+arr = [' '] * 40
+io = process('sh')
+io.sendline('cd .secret/0')
+index =list(range(48,58))
+index.extend(list(range(65,91)))
+index.extend(list(range(97,123)))
+
+for i in index:
+    current = chr(i)
+    print(current)
+    io.sendline('cd ../'+current)
+    io.sendline('ls')
+    places=io.recvrepeat(1)
+    places = places.decode().strip().split(' ')
+    for k in places:
+        if('\t' in k):
+            places.extend(k.split('\t'))
+    print(places)
+    if(len(places)==0):
+        continue
+    for j in places:
+         if(j == '' or '\t' in j):
+             continue
+         arr[int(j)] = current
+print(*arr, sep = '')
