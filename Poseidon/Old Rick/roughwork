@@ -1,0 +1,4 @@
+http://poseidonchalls.westeurope.cloudapp.azure.com:20000/index.php?first=pickle_rick&second=
+
+curl -X POST  http://poseidonchalls.westeurope.cloudapp.azure.com:20000/index.php?first=pickle_rick&second=test&third=as
+
