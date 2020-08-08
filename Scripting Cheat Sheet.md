@@ -44,12 +44,14 @@ session.get(url)
         sendline(line) - Sends data plus a newline
 * Processes and Basic Features
         Creating a process and then using it for shell
+        ```py
                 from pwn import *
                 io = process('sh')
                 io.sendline('echo Hello, world')
                 io.recvline()
                 # 'Hello, world\n'
                 io.interactive()
+         ```
 * client = listen(8080).wait_for_connection()
 * SSH 
                 from pwn import *
