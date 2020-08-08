@@ -43,7 +43,8 @@ session.get(url)
         send(data) - Sends data
         sendline(line) - Sends data plus a newline
 * Processes and Basic Features
-        Creating a process and then using it for shell
+        Creating a process and then using it for shell  
+        
         ```py
                 from pwn import *
                 io = process('sh')
