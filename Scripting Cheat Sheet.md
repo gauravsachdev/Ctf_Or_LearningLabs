@@ -1,3 +1,5 @@
+ #!/usr/bin/env python3
+
 #### BASH
 
 God Tier Cheatsheet
@@ -43,13 +45,16 @@ session.get(url)
         send(data) - Sends data
         sendline(line) - Sends data plus a newline
 * Processes and Basic Features
-        Creating a process and then using it for shell
+        Creating a process and then using it for shell  
+        
+        ```py
                 from pwn import *
                 io = process('sh')
                 io.sendline('echo Hello, world')
                 io.recvline()
                 # 'Hello, world\n'
                 io.interactive()
+         ```
 * client = listen(8080).wait_for_connection()
 * SSH 
                 from pwn import *
