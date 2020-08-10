@@ -55,3 +55,7 @@ Searching on windows cli
 wget http://jh2i.com:50011/site/flag.php --max-redirect 120
 curl -L --max-redirs
 ---------------------------------------
+
+python3 -c "import pty;pty.spawn('/bin/bash')"
+
+-------------------------------------
