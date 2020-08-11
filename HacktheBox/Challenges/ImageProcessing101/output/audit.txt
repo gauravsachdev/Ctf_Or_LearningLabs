@@ -1,0 +1,23 @@
+Foremost version 1.5.7 by Jesse Kornblum, Kris Kendall, and Nick Mikus
+Audit File
+
+Foremost started at Wed Aug 12 03:24:20 2020
+Invocation: foremost -i cheeki_breeki.png 
+Output directory: /media/gs7/Windows1/Users/Gaurav Sachdev/Desktop/Code/Ctf adn stuff the main github repo/Labs/HacktheBox/Challenges/ImageProcessing101/output
+Configuration file: /etc/foremost.conf
+------------------------------------------------------------------
+File: cheeki_breeki.png
+Start: Wed Aug 12 03:24:20 2020
+Length: 367 KB (376389 bytes)
+ 
+Num	 Name (bs=512)	       Size	 File Offset	 Comment 
+
+0:	00000000.png 	     367 KB 	          0 	  (564 x 492)
+Finish: Wed Aug 12 03:24:20 2020
+
+1 FILES EXTRACTED
+	
+png:= 1
+------------------------------------------------------------------
+
+Foremost finished at Wed Aug 12 03:24:20 2020
