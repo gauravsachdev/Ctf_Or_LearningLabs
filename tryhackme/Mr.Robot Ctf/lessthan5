@@ -1,0 +1,10 @@
+#!/usr/bin/env python3
+ 
+wordlist = open("fsocity.dic", "r")
+
+final = open("reduced.txt","w")
+words = wordlist.read().split('\n')
+
+for item in words:
+    if len(item) >= 5:
+        final.write("%s\n" % item)

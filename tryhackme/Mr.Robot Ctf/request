@@ -1,0 +1,31 @@
+POST /wp-login.php HTTP/1.1
+
+Host: 10.10.50.122
+
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0
+
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+
+Accept-Language: en-US,en;q=0.5
+
+Accept-Encoding: gzip, deflate
+
+Content-Type: application/x-www-form-urlencoded
+
+Content-Length: 101
+
+Origin: http://10.10.50.122
+
+DNT: 1
+
+Connection: close
+
+Referer: http://10.10.50.122/wp-login.php
+
+Cookie: s_cc=true; s_fid=30D6C1BB10614948-08F77CE79DC90010; s_nr=1597303121500; s_sq=%5B%5BB%5D%5D; wordpress_test_cookie=WP+Cookie+check
+
+Upgrade-Insecure-Requests: 1
+
+
+
+log=admin&pwd=admin&wp-submit=Log+In&redirect_to=http%3A%2F%2F10.10.50.122%2Fwp-admin%2F&testcookie=1

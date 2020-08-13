@@ -1,0 +1,19 @@
+massscan
+Two ports 80,443
+
+Apache 
+/inform
+Wordpress 
+
+dirbuster
+wp-login.php
+/feed
+
+dirb found robots which revealed key 1 of 3
+
+wordlist brute to find username first
+
+https://www.hackingarticles.in/wordpress-reverse-shell/
+https://github.com/pentestmonkey/php-reverse-shell/blob/master/php-reverse-shell.php
+
+abcdefghijklmnopqrstuvwxyz
