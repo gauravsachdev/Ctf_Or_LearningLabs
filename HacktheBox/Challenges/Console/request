@@ -1,0 +1,13 @@
+GET http://docker.hackthebox.eu:32652/ HTTP/1.1
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/84.0.4147.125 Safari/537.36 Edg/84.0.522.61
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Sec-Fetch-Site: none
+Sec-Fetch-Mode: navigate
+Sec-Fetch-User: ?1
+Sec-Fetch-Dest: document
+Accept-Language: en-US,en;q=0.9
+Cookie: __cfduid=d5fbfb48ed716f2198960ad56a8ec5e2d1597469333; _ga=GA1.2.675236629.1597469334; ajs_anonymous_id=%22184bee22-3e70-4fc3-844a-0e9e2d7ca603%22; ajs_user_id=%22cdb43a2bc04c373623631f6b18a4bbf1%22; php-console-server=5; php-console-client=eyJwaHAtY29uc29sZS1jbGllbnQiOjUsImF1dGgiOnsicHVibGljS2V5IjoiZDFkNThiMmY3MzJmZDU0NmQ5NTA3ZGEyNzVhNzFiZGRjMGMyMzAwYTIxNGFmM2YzZjNhNWY1ZjI0OWZlMjc1ZSIsInRva2VuIjoiMWFmYWJjMjEzMjE2Mjg4YzdiZjIyZDhhMmZjNDI1NDY3N2Q1OGU5MjZkOTBkNTk3ZjA4YTBlZjg1ZDQ2OTUxZiJ9fQ==
+Host: docker.hackthebox.eu:32652
