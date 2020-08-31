@@ -1,0 +1,8 @@
+#!/usr/bin/env python3
+
+import urllib
+
+
+sql=("{\"user\":\"admin' OR 1=1 --}")
+hextoint=int.from_bytes(sql.encode('ibm037'),byteorder='big')
+print(bin(hextoint))
