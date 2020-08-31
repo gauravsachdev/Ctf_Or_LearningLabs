@@ -65,3 +65,9 @@ Payloads
 https://github.com/swisskyrepo/PayloadsAllTheThings
 
 ------------------------------------------
+
+Capabilities of the files
+
+getcap -r / 2>/dev/null
+
+-------------------------------------------
