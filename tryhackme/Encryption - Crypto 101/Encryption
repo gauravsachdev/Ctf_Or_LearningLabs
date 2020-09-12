@@ -1,0 +1,3 @@
+ssh2john idrsa.id_rsa > crackssh
+
+john --wordlist=/home/user/rockyou.txt --format=SSH crackssh
