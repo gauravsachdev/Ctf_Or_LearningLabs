@@ -71,3 +71,7 @@ Capabilities of the files
 getcap -r / 2>/dev/null
 
 -------------------------------------------
+
+ssh -i id_rsa username@ip
+
+--------------------------------------------
