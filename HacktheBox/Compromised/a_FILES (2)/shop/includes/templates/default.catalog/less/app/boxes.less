@@ -1,0 +1,50 @@
+/* Boxes */
+
+.twelve-eighty {
+  min-width: 280px;
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
+.box {
+  margin-bottom: @default-gutter-size;
+  &.white {
+    padding: @default-gutter-size;
+    border-radius: @default-border-radius;
+    background: #fff;
+  }
+}
+
+#box-campaign-products, #box-latest-products, #box-popular-products, #box-similar-products, #box-also-purchased-products {
+  .title {
+    font-weight: normal;
+    font-size: 2em;
+    margin: 0 0 @default-gutter-size 0;
+    padding-bottom: @default-gutter-size/2;
+    border-bottom: 2px solid @default-title-border-color;
+  }
+}
+
+#box-information {
+  li {
+    a {
+      color: inherit;
+      line-height: 175%;
+      &.active {
+        color: @default-link-color;
+      }
+      &:hover {
+        color: @default-link-color;
+      }
+    }
+  }
+}
+
+#box-filter {
+  .manufacturers {
+    ul {
+      max-height: 200px;
+      overflow-y: auto;
+    }
+  }
+}

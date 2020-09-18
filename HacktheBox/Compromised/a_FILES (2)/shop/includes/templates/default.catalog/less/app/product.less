@@ -1,0 +1,94 @@
+@image-whitespace-color: #fff;
+
+#view-full-page {
+  float: right;
+  display: inline-block;
+  padding: @default-gutter-size/2 @default-gutter-size;
+}
+
+#box-product {
+  .image-wrapper {
+    position: relative;
+    margin-bottom: @default-gutter-size;
+    overflow: hidden;
+    background: @image-whitespace-color;
+    text-align: center;
+    box-shadow: 0 0 2px rgba(0,0,0,0.15);
+    img {
+      width: 100%;
+      min-height: 1px;
+    }
+    .sticker {
+      color: #fff;
+      font-size: 11px;
+      font-weight: bold;
+      top: 15px;
+      left: -30px;
+      padding: 3px;
+      position: absolute;
+      text-align: center;
+      text-transform: uppercase;
+      transform: rotate(-45deg);
+      width: 125px;
+      &.new {
+        background: rgba(251, 184, 41, 0.85);
+      }
+      &.sale {
+        background: rgba(237, 60, 50, 0.85);
+      }
+    }
+  }
+  .extra-image {
+    background: @image-whitespace-color;
+    text-align: center;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.15);
+    margin-bottom: @default-gutter-size;
+    img {
+      max-width: 100%;
+    }
+  }
+  .price-wrapper {
+    font-size: 2em;
+  }
+  .regular-price {
+    font-size: 0.75em;
+  }
+  .campaign-price {
+    color: #cc0000;
+  }
+  .tax {
+    color: #999999;
+  }
+  .stock-available {
+    .value {
+      color: #009900;
+    }
+  }
+  .stock-partly-available {
+    .value {
+      color: #ff9900;
+    }
+  }
+  .stock-unavailable {
+    .value {
+      color: #cc0000;
+    }
+  }
+  .social-bookmarks {
+    font-size: 1.75em;
+    margin: @default-gutter-size 0;
+  }
+  .attributes {
+    table {
+      -webkit-column-break-inside: avoid;
+      -moz-column-break-inside: avoid;
+      break-inside: avoid-column;
+      td:first-child {
+        width: 50%;
+      }
+    }
+    @media(min-width: @media-breakpoint-sm) {
+      columns: auto 2;
+    }
+  }
+}

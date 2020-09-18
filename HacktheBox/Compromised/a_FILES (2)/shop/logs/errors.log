@@ -1,0 +1,5 @@
+[28-May-2020 01:48:07 America/New_York] Notice: Undefined index: password in ~/admin/login.php on line 28
+Request: GET /shop/admin/login.php HTTP/1.1
+Client: 192.168.1.209 (kali-pentest.fios-router.home)
+User Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+
