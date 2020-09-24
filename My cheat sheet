@@ -87,3 +87,7 @@ Generally usernames you are looking for
 find / -type f -newermt "2020-09-14" ! -newermt "2020-09-20" 2>/dev/null -ls 
 
 ------------------------------------------------------------------
+
+cat masscan_output | grep "open port" | awk '{print $4}' | tr '\n' ',' | tr -d '/tcp'
+
+--------------------------------------------------------------
