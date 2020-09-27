@@ -1,0 +1,10 @@
+GET http://doctors.htb/post/3 HTTP/1.1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; rv:78.0) Gecko/20100101 Firefox/78.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+DNT: 1
+Connection: keep-alive
+Referer: http://doctors.htb/user/test
+Cookie: session=.eJwlzktqAzEQBNC7aJ2FWuqP2pcZpP5gE0hgxl6F3N0KWRYFVe-nHHnGdS-35_mKj3I8vNyKgSSb9gbNeJojC0mNQLXpuSZ5jKlukbQAWsNBiauzSvjQ3WEnBNQl0hyCOGDJQA41z06NSI0ZGaVW4h7JTKrRq-w5MC4b8rri_Nf0He0683h-f8bXHw9r7pMxIActIx2VFGUxTVihHKOyeu3l9w3njz5z.X3BNbg.pnR4uZAAfuVbKoASSR7Dc7IAB1o
+Upgrade-Insecure-Requests: 1
+Host: doctors.htb
